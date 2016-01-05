@@ -13,5 +13,7 @@
     
 
 - name: Extract kubernetes binary
-  unarchive: src=/tmp/kubernetes.tar.gz dest=/tmp/
+  unarchive: src=/tmp/kubernetes.tar.gz
+             dest=/tmp/
+             copy=no
   
