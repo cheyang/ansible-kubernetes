@@ -1,2 +1,17 @@
 ---
 # tasks file for master
+- name: Add kube group
+  group: name=kube system=yes
+  
+- name: Add kube user
+  user: name=kube system=yes shell=/sbin/nologin comment="Kubernetes user" group=kube home=/
+
+- name: Download kubernetes package
+  get_url: >
+    url=https://github.com/kubernetes/kubernetes/releases/download/v{{ kubernetes_release_version }}/kubernetes.tar.gz
+    dest=/tmp/kubernetes.tar.gz
+    
+
+- name: Extract kubernetes binary
+  unarchive: src=/tmp/kubernetes.tar.gz dest=/tmp/
+  
