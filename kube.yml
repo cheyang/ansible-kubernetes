@@ -1,0 +1,8 @@
+---
+#This playbook deploys a kubernetes cluster
+
+- hosts: masters
+  sudo: yes
+  roles:
+    - master
+  
