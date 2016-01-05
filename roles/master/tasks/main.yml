@@ -21,4 +21,10 @@
   unarchive: src=/tmp/kubernetes/server/kubernetes-server-linux-amd64.tar.gz
              dest=/tmp/kubernetes/server/
              copy=no
+           
+- name: Copy kubenetes binary
+  shell: find . -executable -type f|grep kube|grep -v kube$| xargs cp -t /usr/bin/
+  args:
+    chdir: /tmp/kubernetes/server/kubernetes/server/bin
+    
   
