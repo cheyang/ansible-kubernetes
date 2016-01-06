@@ -2,7 +2,7 @@
 #This playbook deploys a kubernetes cluster
 
 - hosts: masters
-  strategy: free
+  #strategy: free it's only for 2.0.0
   sudo: yes
   roles:
     - master
