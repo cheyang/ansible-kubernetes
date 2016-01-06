@@ -5,4 +5,6 @@
   sudo: yes
   roles:
     - master
+  tags:
+    - master
   
