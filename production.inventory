@@ -1,6 +1,10 @@
-[masters]
+[kube-masters]
 10.62.56.192
+
+[kube-nodes]
+10.62.66.169
 
 
 [production:children]
-masters
+kube-masters
+kube-nodes
