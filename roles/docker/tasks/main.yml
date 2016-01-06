@@ -9,4 +9,4 @@
 - shell: echo {{docker_package_name}}-{{docker_version}} > /tmp/test
  
 - name: Install docker
-  yum: name={{docker_package_name}}-{{docker_version}} state=present
+  shell: yum install -y {{docker_package_name}}-{{docker_version}} 
