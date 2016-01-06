@@ -2,10 +2,12 @@
 # tasks file for master
 
   
-- name: Download contrib
-  shell: git clone https://github.com/kubernetes/contrib.git
-  args:
-    chdir: /tmp/contrib/init/systemd
-
+- name: Add kube group
+  group: name=kube system=yes
+  run_once: true
+  
+- name: Add kube user
+  user: name=kube system=yes shell=/sbin/nologin comment="Kubernetes user" group=kube home=/
+  run_once: true
 
   

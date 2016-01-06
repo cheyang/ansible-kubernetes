@@ -1,14 +1,6 @@
 ---
 # tasks file for kubernetes
 
-- name: Add kube group
-  group: name=kube system=yes
-  run_once: true
-  
-- name: Add kube user
-  user: name=kube system=yes shell=/sbin/nologin comment="Kubernetes user" group=kube home=/
-  run_once: true
-
 - name: Determine if Kube installed
   stat: path=/usr/bin/kubelet
   register: check_kube_installed

@@ -10,5 +10,12 @@
   roles:
     - kubernetes
   tags:
-    - kubernetes
+    - install
+    
+- hosts:
+    - kube-nodes
+  serial: 100%
+  sudo: yes
+  roles:
+    - docker
   
