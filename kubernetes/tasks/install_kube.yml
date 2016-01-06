@@ -2,7 +2,7 @@
 # tasks file for kubernetes
 
 - name: Register tmp kube tar file
-  stat: path=/tmp/kubernetes_v{{ kubernetes_release_version }}.tar.gz
+  stat: path=/tmp/{{kubenetes_binary_package}}
   register: kubetmppkg
   
 - name: Delete kubernetes package if it exists
@@ -12,11 +12,11 @@
 - name: Download kubernetes package
   get_url: >
     url=https://github.com/kubernetes/kubernetes/releases/download/v{{ kubernetes_release_version }}/kubernetes.tar.gz
-    dest=/tmp/kubernetes.tar.gz
+    dest=/tmp/{{kubenetes_binary_package}}
     
 
 - name: Extract kubernetes package
-  unarchive: src=/tmp/kubernetes.tar.gz
+  unarchive: src=/tmp/{{kubenetes_binary_package}}
              dest=/tmp/
              copy=no
              
@@ -26,6 +26,6 @@
              copy=no
            
 - name: Copy kubenetes binary
-  shell: find . -executable -type f|grep kube|grep -v kube$| xargs cp -t /usr/bin/
+  shell: find . -executable -type f|grep kube|grep -v kube$| xargs cp -t /usr/local/bin/
   args:
     chdir: /tmp/kubernetes/server/kubernetes/server/bin
