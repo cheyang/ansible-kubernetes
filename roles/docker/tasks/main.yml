@@ -5,6 +5,8 @@
 - name: Create docker repo
   template: src="docker.repo.j2" dest="/etc/yum.repos.d/docker.repo"
   
-  
+
+- shell: echo {{docker_package_name}}-{{docker_version}} > /tmp/test
+ 
 - name: Install docker
   yum: name={{docker_package_name}}-{{docker_version}} state=present

@@ -2,7 +2,7 @@
 # tasks file for kubernetes
 
 - name: Determine if Kube installed
-  stat: path=/usr/bin/kubelet
+  stat: path=/usr/local/bin/kubelet
   register: check_kube_installed
   always_run: yes
   
