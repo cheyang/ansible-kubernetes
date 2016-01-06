@@ -17,3 +17,4 @@
 - name: Install kube if it doesn't exist
   include: install_kube.yml
   when: not check_kube_installed.stat.exists
+  #tags: install
