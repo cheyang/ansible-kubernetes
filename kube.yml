@@ -1,12 +1,14 @@
 ---
 #This playbook deploys a kubernetes cluster
 
-- hosts: kube-masters
+- hosts: 
+    - kube-masters
+    - kube-nodes
   #strategy: free it's only for 2.0.0
   serial: 50%
   sudo: yes
   roles:
-    - master
+    - kubernetes
   tags:
-    - master
+    - kubernetes
   
