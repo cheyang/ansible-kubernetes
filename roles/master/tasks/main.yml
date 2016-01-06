@@ -28,3 +28,13 @@
     chdir: /tmp/kubernetes/server/kubernetes/server/bin
     
   
+- name: Install git
+  yum: name=git state=present
+  
+- name: Download contrib
+  shell: git clone https://github.com/kubernetes/contrib.git
+  args:
+    chdir: /tmp/contrib/init/systemd
+
+
+  
