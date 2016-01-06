@@ -2,6 +2,7 @@
 #This playbook deploys a kubernetes cluster
 
 - hosts: masters
+  strategy: free
   sudo: yes
   roles:
     - master
