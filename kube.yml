@@ -5,7 +5,7 @@
     - kube-masters
     - kube-nodes
   #strategy: free it's only for 2.0.0
-  serial: 50%
+  serial: 100%
   sudo: yes
   roles:
     - kubernetes
