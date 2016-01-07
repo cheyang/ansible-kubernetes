@@ -1,7 +1,20 @@
 ---
+#kubernetes related vars
 kubernetes_release_version: "1.1.2"
 
+kubernetes_binary_package: kubernetes_v{{ kubernetes_release_version }}.tar.gz
+
+# docker related vars
 docker_version: "1.8.2"
 
 docker_package_name: "docker-engine"
+
+#etcd related vars
+
+etcd_version: "2.0.12"
+
+etcd_binary_package: etcd-v{{ etcd_version }}-linux-amd64.tar.gz
+
+
+
 

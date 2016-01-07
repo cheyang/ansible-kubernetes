@@ -1,2 +1,6 @@
 ---
 # defaults file for docker
+
+docker_version: "1.8.2"
+
+docker_package_name: "docker-engine"

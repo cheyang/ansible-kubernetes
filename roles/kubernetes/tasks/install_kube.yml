@@ -11,12 +11,12 @@
   
 - name: Download kubernetes package
   get_url: >
-    url=https://github.com/kubernetes/kubernetes/releases/download/v{{ kubernetes_release_version }}/kubernetes.tar.gz
-    dest=/tmp/{{kubenetes_binary_package}}
+    url={{kubernetes_download_url}}
+    dest=/tmp/{{kubernetes_binary_package}}
     
 
 - name: Extract kubernetes package
-  unarchive: src=/tmp/{{kubenetes_binary_package}}
+  unarchive: src=/tmp/{{kubernetes_binary_package}}
              dest=/tmp/
              copy=no
              
