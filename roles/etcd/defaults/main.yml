@@ -1,2 +1,7 @@
 ---
 # defaults file for etcd
+etcd_version: "2.0.12"
+
+etcd_binary_package: etcd-v{{ etcd_version }}-linux-amd64.tar.gz
+
+etcd_download_url: https://github.com/coreos/etcd/releases/download/{{ etcd_version }}/etcd-{{ etcd_version }}-linux-amd64.tar.gz

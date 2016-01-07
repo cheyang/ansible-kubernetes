@@ -2,11 +2,15 @@
 # tasks file for docker
 
 # For now only support centos, redhat and fedora
+- name: Update yum
+  shell: yum update
+
+
 - name: Create docker repo
   template: src="docker.repo.j2" dest="/etc/yum.repos.d/docker.repo"
   
 
-- shell: echo {{docker_package_name}}-{{docker_version}} > /tmp/test
+#- shell: echo {{docker_package_name}}-{{docker_version}} > /tmp/test
  
 - name: Install docker
   shell: yum install -y {{docker_package_name}}-{{docker_version}} 
