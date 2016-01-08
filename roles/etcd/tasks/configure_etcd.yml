@@ -6,11 +6,9 @@
 
 - name: Write etcd config file
   template: src=etcd.conf.j2 dest=/etc/etcd/etcd.conf
-  notify:
-    - restart etcd
 
 - name: Write etcd systemd unit file for centos redhat
-  copy: src=etcd.service dest=/etc/systemd/system
+  copy: src=etcd.service dest=/usr/lib/systemd/system
   notify:
     - reload systemd
     - restart etcd
