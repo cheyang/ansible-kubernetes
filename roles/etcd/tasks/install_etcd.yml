@@ -14,7 +14,7 @@
 
 - name: Download tar file
   get_url:
-    url: {{etcd_download_url}}
+    url: "{{etcd_download_url}}"
     dest: /tmp/.ansible/files
     #validate_certs: False
   environment:
