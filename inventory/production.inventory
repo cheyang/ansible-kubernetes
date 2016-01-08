@@ -4,7 +4,11 @@
 [kube-nodes]
 10.62.66.169
 
+[etcd]
+10.62.56.192
+10.62.66.169
 
 [production:children]
 kube-masters
 kube-nodes
+etcd
