@@ -1,2 +1,4 @@
 ---
 # tasks file for flannel
+
+- include: etcd_config.yml

@@ -1,2 +1,4 @@
 ---
 # defaults file for flannel
+
+flannel_etcd_url_scheme: http

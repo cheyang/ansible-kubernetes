@@ -20,5 +20,18 @@ etcd_binary_package: etcd-v{{ etcd_version }}-linux-amd64.tar.gz
 etcd_download_url: https://github.com/coreos/etcd/releases/download/v{{ etcd_version }}/etcd-v{{ etcd_version }}-linux-amd64.tar.gz
 
 
+#flannel related vars
+networking: flannel
 
+flannel_etcd_url_scheme: http
+
+flannel_subnet: 172.16.0.0
+
+flannel_prefix: 16
+
+flannel_host_prefix: 24
+
+#kube related vars
+
+kube_service_addresses: 172.17.0.0/16
 
