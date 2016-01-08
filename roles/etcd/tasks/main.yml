@@ -19,3 +19,6 @@
 - name: Configure etcd if it doesn't exist
   include: configure_etcd.yml
   when: not check_etcd_configured.stat.exists
+  
+- name: start etcd
+  service: name=etcd state=started
