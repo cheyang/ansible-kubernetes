@@ -1,6 +1,13 @@
 ---
 #This playbook deploys a kubernetes cluster
 
+- hosts:
+    - all
+  serial: 100%
+  sudo: yes
+  roles:
+    - common
+
 - hosts: 
     - kube-masters
     - kube-nodes
