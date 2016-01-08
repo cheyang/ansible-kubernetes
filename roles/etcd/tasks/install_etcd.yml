@@ -29,7 +29,7 @@
     copy: no
            
 - name: Copy etcd binary
-  copy: src=/tmp/.ansible/files/etcd-{{ etcd_version }}-linux-amd64/{{ item }}
+  copy: src=/tmp/.ansible/files/etcd-v{{ etcd_version }}-linux-amd64/{{ item }}
         dest=/usr/local/bin/{{item}}
   with_items:
     - etcd
