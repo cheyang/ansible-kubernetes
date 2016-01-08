@@ -1,6 +1,9 @@
 ---
 # tasks file for etcd installation
 
+- name: Create config directory
+  file: path="/etc/etcd" state=directory
+
 - name: Write etcd config file
   template: src=etcd.conf.j2 dest=/etc/etcd/etcd.conf
   notify:
