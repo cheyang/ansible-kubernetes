@@ -1,5 +1,5 @@
 ---
-#This playbook install a kubernetes binary
+#This playbook deploys a kubernetes cluster
 
 - hosts: 
     - kube-masters
@@ -18,4 +18,12 @@
   sudo: yes
   roles:
     - docker
+
+# install and configure etcd
+- hosts:
+    - etcd
+  serial: 100%
+  sudo: yes
+  roles:
+    - etcd
   
