@@ -1,0 +1,33 @@
+---
+# tasks file for flannel installation
+
+- name: Register tmp flannel tar file
+  stat: path=/tmp/.ansible/files/{{flannel_binary_package}}
+  register: flanneltmppkg
+  
+- name: Delete etcd package if it exists
+  shell: rm -rf /tmp/.ansible/files/flannel*
+  when: not flanneltmppkg.stat.exists
+  
+- name: Create download dir
+  file: path="/tmp/.ansible/files" state=directory
+
+- name: Download tar file
+  get_url:
+    url: "{{flannel_download_url}}"
+    dest: /tmp/.ansible/files
+    #validate_certs: False
+  environment:
+    http_proxy: "{{ http_proxy|default('') }}"
+    https_proxy: "{{ https_proxy|default('') }}"
+    
+
+- name: Extract flannel package
+  unarchive:
+    src: "/tmp/.ansible/files/{{flannel_binary_package}}"
+    dest: /tmp/.ansible/files
+    copy: no
+           
+- name: Copy flannel binary
+  shell: cp /tmp/.ansible/files/etcd-v{{ etcd_version }}-linux-amd64/{{ item }} /usr/local/bin/{{item}}
+ 

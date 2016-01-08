@@ -14,3 +14,9 @@
  
 - name: Install docker
   shell: yum install -y {{docker_package_name}}-{{docker_version}} 
+  
+- name: Write docker systemd unit file for centos redhat
+  copy: src=docker.service dest=/usr/lib/systemd/system
+  notify:
+    - reload systemd
+    - restart docker

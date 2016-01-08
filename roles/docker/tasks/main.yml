@@ -11,3 +11,8 @@
   include: yum-docker-install.yml
   when: not check_docker_installed.stat.exists
   #tags: install
+  
+- name: Enable Docker
+  service: name=docker enabled=yes
+  notify:
+    - start docker

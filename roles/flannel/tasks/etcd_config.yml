@@ -3,7 +3,7 @@
   set_fact:
     endpoints: "{% for hostname in groups['etcd'] %}{{flannel_etcd_url_scheme}}://{{ hostname }}:2379{% if not loop.last %},{% endif %}{% endfor %}"
     conf_file: "/tmp/flannel-conf.json"
-    conf_loc: "/{{ cluster_name }}/network/config"
+    conf_loc: "/coreos.com/network/config"
   run_once: true
   delegate_to: "{{ groups['etcd'][0] }}"
 
