@@ -3,11 +3,9 @@
 
 - name: Add etcd group
   group: name=etcd system=yes
-  run_once: true
   
 - name: Add etcd user
   user: name=etcd system=yes shell=/sbin/nologin comment="etcd user" group=etcd home=/var/lib/etcd
-  run_once: true
 
 - name: Determine if etcd installed
   stat: path=/usr/local/bin/etcd
