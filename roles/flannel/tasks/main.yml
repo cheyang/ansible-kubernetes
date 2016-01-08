@@ -7,7 +7,7 @@
   always_run: yes
 
 - name: Configure flannel in etcd server
-  include: etcd_config.yml
+  include: network_config.yml
   when:  check_flannel_not_configured != ""
     
 - name: Determine if flannel installed
@@ -19,6 +19,17 @@
   include: install_flannel.yml
   when: (not check_flannel_installed.stat.exists) and (inventory_hostname in groups['kube-nodes'])
   tags: install
+  
+- name: Determine if flannel configured
+  stat: path=/usr/lib/systemd/system/flanneld.service
+  register: check_flannel_configured
+  
+- name: Configure flannel if it doesn't exist
+  include: configure_flannel.yml
+  when: not check_flannel_configured.stat.exists
+  
+- name: Start Flannel 
+  service: name=flanneld state=started
    
 - name: Enable Flannel
   service: name=flanneld enabled=yes

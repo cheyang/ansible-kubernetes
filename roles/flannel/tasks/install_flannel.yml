@@ -28,6 +28,9 @@
     dest: /tmp/.ansible/files
     copy: no
            
-- name: Copy flannel binary
-  shell: cp /tmp/.ansible/files/etcd-v{{ etcd_version }}-linux-amd64/{{ item }} /usr/local/bin/{{item}}
+- name: Copy flannel binaries
+  shell: cp /tmp/.ansible/files/flannel-{{flannel_version}}-linux-amd64/{{item}} /usr/local/bin/{{item}}
+  with_items:
+    - flanneld
+    - mk-docker-opts.sh
  
