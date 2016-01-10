@@ -34,4 +34,4 @@
 - name: Enable Flannel
   service: name=flanneld enabled=yes
   notify:
-    - start flanneld
+    - configure and start docker
