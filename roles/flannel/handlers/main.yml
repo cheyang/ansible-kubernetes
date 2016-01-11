@@ -2,7 +2,7 @@
 # handlers file for flannel
 
 - name: configure and start docker
-  package: name=net-tools state=present
+  yum: name=net-tools state=present
   notify:
     - check docker existence
     - stop docker
