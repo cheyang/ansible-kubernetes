@@ -33,4 +33,12 @@
   sudo: yes
   roles:
     - etcd
+
+# install and configure flannel  
+- hosts:
+    - kube-nodes
+  serial: 100%
+  sudo: yes
+  roles:
+    - flannel
   
