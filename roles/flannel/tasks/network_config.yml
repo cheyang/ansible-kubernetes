@@ -20,7 +20,7 @@
   run_once: true
   delegate_to: "{{ groups['etcd'][0] }}"
 
-- name: Clean up the flannel config file
-  file: path=/tmp/flannel-config.json state=absent
-  run_once: true
-  delegate_to: "{{ groups['etcd'][0] }}"
+#- name: Clean up the flannel config file
+#  file: path=/tmp/flannel-config.json state=absent
+#  run_once: true
+#  delegate_to: "{{ groups['etcd'][0] }}"
