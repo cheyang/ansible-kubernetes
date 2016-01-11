@@ -2,12 +2,12 @@
 # tasks file for master
 
   
-- name: Add kube group
-  group: name=kube system=yes
-#  run_once: true
-  
-- name: Add kube user
-  user: name=kube system=yes shell=/sbin/nologin comment="Kubernetes user" group=kube home=/
-#  run_once: true
+- name: Create kubernetes config directory
+  file: path={{ kube_config_dir }} state=directory
 
+- name: Create kubernetes script directory
+  file: path={{ kube_script_dir }} state=directory
+
+- name: Generate kubernetes global config file
+  template: src=config.j2 dest={{ kube_config_dir }}/config
   

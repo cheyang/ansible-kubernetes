@@ -1,6 +1,22 @@
 ---
 # defaults file for master
 
+cluster_name: cluster.local
+
+kube_master_insecure_host: 0.0.0.0
+
 kube_master_insecure_port: 8080
 
 kube_master_api_port: 443
+
+kube_config_dir: /etc/kubernetes
+
+kube_script_dir: /usr/libexec/kubernetes
+
+# This is where all the cert scripts and certs will be located
+kube_cert_dir: "{{ kube_config_dir }}/certs"
+
+# The IP(s) for which the certificate will be valid
+kube_cert_ip: "{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] | join (',IP:') }}"
+
+dns_domain: "{{ cluster_name }}"
