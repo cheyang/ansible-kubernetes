@@ -10,4 +10,18 @@
   user: name=kube system=yes shell=/sbin/nologin comment="Kubernetes user" group=kube home=/
 #  run_once: true
 
+- name: Determine if general configure done
+  stat: path=/usr/lib/systemd/system/flanneld.service
+  register: check_flannel_configured
   
+- name: Configure flannel if it doesn't exist
+  include: configure_flannel.yml
+  when: not check_flannel_configured.stat.exists
+
+- name: Determine if apiserver configured
+  stat: path=/usr/lib/systemd/system/flanneld.service
+  register: check_flannel_configured
+  
+- name: Configure flannel if it doesn't exist
+  include: configure_flannel.yml
+  when: not check_flannel_configured.stat.exists
