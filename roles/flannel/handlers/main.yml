@@ -23,9 +23,8 @@
 - name: reconfigure docker0 ip
   shell: "source /run/flannel/subnet.env; ifconfig docker0 ${FLANNEL_SUBNET}"
   
-- name: stop docker
+- name: start docker
   service: name=docker state=started
-  when: '"docker0" in ansible_interfaces'
   
 - name: reload systemd
   command: systemctl --system daemon-reload
