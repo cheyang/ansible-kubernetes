@@ -2,7 +2,7 @@
 # tasks file for kubernetes
 
 - name: Register tmp kube tar file
-  stat: path=/tmp/{{kubenetes_binary_package}}
+  stat: path=/tmp/{{kubernetes_binary_package}}
   register: kubetmppkg
   
 - name: Delete kubernetes package if it exists
