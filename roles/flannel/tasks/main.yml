@@ -2,13 +2,13 @@
 # tasks file for flannel
 
 - name: Determine if etcd flannel config enabled
-  shell: curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network | grep "Key not found"
+  shell: curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network"
   register: check_flannel_not_configured
   always_run: yes
 
 - name: Configure flannel in etcd server
   include: network_config.yml
-  when:  check_flannel_not_configured != ""
+  when:  "'Key not found' in check_flannel_not_configured"
     
 - name: Determine if flannel installed
   stat: path=/usr/local/bin/flanneld
