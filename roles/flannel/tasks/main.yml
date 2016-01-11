@@ -27,11 +27,3 @@
 - name: Configure flannel if it doesn't exist
   include: configure_flannel.yml
   when: not check_flannel_configured.stat.exists
-  
-- name: Start Flannel 
-  service: name=flanneld state=started
-   
-- name: Enable Flannel
-  service: name=flanneld enabled=yes
-  notify:
-    - configure and start docker

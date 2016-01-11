@@ -28,3 +28,10 @@
   
 - name: reload systemd
   command: systemctl --system daemon-reload
+  
+- name: start Flannel 
+  service: name=flanneld state=started
+   
+- name: enable Flannel
+  service: name=flanneld enabled=yes
+    
