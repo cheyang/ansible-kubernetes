@@ -1,4 +1,28 @@
 ---
 # handlers file for flannel
 
--name: configure and start docker
+- name: configure and start docker
+  package: name=net-tools state=present
+  notify:
+    - check docker existence
+    - stop docker
+    - reconfigure docker0 ip
+    - start docker
+    
+- name: check docker existence
+  command: "docker version"
+  # if rc!=2 (No such file or directory), assume that docker has installed
+  register: has_docker
+  changed_when: false
+  failed_when: false
+    
+- name: stop docker
+  service: name=docker state=stopped
+  when: '"docker0" in ansible_interfaces'
+  
+- name: reconfigure docker0 ip
+  shell: "source /run/flannel/subnet.env; ifconfig docker0 ${FLANNEL_SUBNET}"
+  
+- name: stop docker
+  service: name=docker state=started
+  when: '"docker0" in ansible_interfaces'
