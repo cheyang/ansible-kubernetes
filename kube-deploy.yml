@@ -41,4 +41,12 @@
   sudo: yes
   roles:
     - flannel
-  
+    
+    
+# install master
+- hosts:
+    - kube-masters
+  serial: 100%
+  sudo: yes
+  roles:
+    - master

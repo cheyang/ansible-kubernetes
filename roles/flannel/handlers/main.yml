@@ -26,3 +26,6 @@
 - name: stop docker
   service: name=docker state=started
   when: '"docker0" in ansible_interfaces'
+  
+- name: reload systemd
+  command: systemctl --system daemon-reload
