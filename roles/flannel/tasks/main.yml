@@ -28,8 +28,8 @@
   include: configure_flannel.yml
   when: not check_flannel_configured.stat.exists
   
-#- name: Start Flannel 
-#  service: name=flanneld state=started
+- name: Start Flannel 
+  service: name=flanneld state=started
    
 - name: Enable Flannel
   service: name=flanneld enabled=yes
