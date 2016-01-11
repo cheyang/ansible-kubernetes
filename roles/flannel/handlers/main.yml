@@ -2,12 +2,16 @@
 # handlers file for flannel
 
 - name: configure and start docker
-  yum: name=net-tools state=present
+  yum: /bin/true
   notify:
+    - install net tools
     - check docker existence
     - stop docker
     - reconfigure docker0 ip
     - start docker
+
+- name: install net tools
+  yum: name=net-tools state=present
     
 - name: check docker existence
   command: "docker version"
