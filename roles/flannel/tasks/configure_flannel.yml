@@ -1,20 +1,11 @@
 ---
 # tasks file for flannel configuration
 
-
-
-- name: Write etcd config file
-  template: src=etcd.conf.j2 dest=/etc/etcd/etcd.conf
-
-- name: Write etcd systemd unit file for centos redhat
-  copy: src=etcd.service dest=/usr/lib/systemd/system
+- name: Write Flannel config file
+  template: src=flanneld.j2 dest=/etc/sysconfig/flanneld
+    
+- name: Write flannel systemd unit file for centos redhat
+  copy: src=flanneld.service dest=/usr/lib/systemd/system
   notify:
     - reload systemd
-    - restart etcd
-
-- name: Enable etcd
-  service: name=etcd enabled=yes
-
-- name: Start etcd
-  service: name=etcd state=started
-  register: etcd_started
+    
