@@ -13,7 +13,7 @@
     mode=0500
   changed_when: false
   
-- debug: msg={{ groups['kube-masters'][0].ansible_hostname }}
+- debug: msg={{ hostvars[inventory_hostname]['ansible_hostname'] }}
 
 - name: Run create cert script on master
   command:
@@ -22,7 +22,7 @@
     creates: "{{ kube_cert_dir }}/server.crt"
   environment:
     MASTER_IP: "{{ kube_cert_ip }}"
-    MASTER_NAME: "{{ groups['kube-masters'][0].ansible_hostname }}"
+    MASTER_NAME: "{{ hostvars[inventory_hostname]['ansible_hostname'] }}"
     DNS_DOMAIN: "{{ dns_domain }}"
     SERVICE_CLUSTER_IP_RANGE: "{{ kube_service_addresses }}"
     CERT_DIR: "{{ kube_cert_dir }}"
