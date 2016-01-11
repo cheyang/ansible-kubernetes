@@ -12,6 +12,11 @@
   run_once: true
   delegate_to: "{{ groups['etcd'][0] }}"
 
+- name: Debug Load the flannel config file into etcd
+  shell: "echo /usr/local/bin/etcdctl --endpoint {{endpoints}} set {{ conf_loc }} < {{ conf_file }}"
+  run_once: true
+  delegate_to: "{{ groups['etcd'][0] }}"
+
 - name: Load the flannel config file into etcd
   shell: "/usr/local/bin/etcdctl --endpoint {{endpoints}} set {{ conf_loc }} < {{ conf_file }}"
   run_once: true

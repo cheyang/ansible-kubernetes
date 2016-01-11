@@ -29,7 +29,7 @@
     copy: no
            
 - name: Copy flannel binaries
-  shell: cp /tmp/.ansible/files/flannel-{{flannel_version}}-linux-amd64/{{item}} /usr/local/bin/{{item}}
+  shell: cp /tmp/.ansible/files/flannel-{{flannel_version}}/{{item}} /usr/local/bin/{{item}}
   with_items:
     - flanneld
     - mk-docker-opts.sh
