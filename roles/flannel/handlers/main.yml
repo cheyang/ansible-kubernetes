@@ -2,7 +2,7 @@
 # handlers file for flannel
 
 - name: configure and start docker
-  yum: /bin/true
+  shell: /bin/true
   notify:
     - install net tools
     - check docker existence
