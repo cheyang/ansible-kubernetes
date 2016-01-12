@@ -45,21 +45,33 @@
  
 - name: Determine if apiserver configured
   stat: path={{kube_config_dir}}/config/apiserver
-  register: check_apiserver_installed
+  register: check_apiserver_configured
   always_run: yes
   
 - name: Install apiserver if it doesn't exist
   include: apiserver.yml
-  when: not check_apiserver_installed.stat.exists
+  when: not check_apiserver_configured.stat.exists
   
   
 # Determine if controller mananger is installed  
  
-- name: Determine if controller configured
-  stat: path={{kube_config_dir}}/config/apiserver
-  register: check_apiserver_installed
+- name: Determine if controller-manager configured
+  stat: path={{kube_config_dir}}/config/controller-manager
+  register: check_controller_configured
   always_run: yes
   
-- name: Install apiserver if it doesn't exist
-  include: apiserver.yml
-  when: not check_apiserver_installed.stat.exists
+- name: Install controller-manager if it doesn't exist
+  include: controller-manager.yml
+  when: not check_controller_configured.stat.exists
+  
+  
+# Determine if scheduler is installed  
+ 
+- name: Determine if controller-manager configured
+  stat: path={{kube_config_dir}}/config/scheduler
+  register: check_scheduler_configured
+  always_run: yes
+  
+- name: Install scheduler if it doesn't exist
+  include: scheduler.yml
+  when: not scheduler.stat.exists
