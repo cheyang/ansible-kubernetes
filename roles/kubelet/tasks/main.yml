@@ -1,2 +1,12 @@
 ---
 # tasks file for kubelet
+
+- name: write the common config file for the kubelet
+  template: src=config.j2 dest={{ kube_config_dir }}/config
+  
+- name: write the kubelet config file for the kubelet
+  template: src=kubelet.j2 dest={{ kube_config_dir }}/config
+  
+  
+- name: Write kubelet systemd unit file for centos redhat
+  copy: src=kubelet.service dest=/usr/lib/systemd/system
