@@ -9,7 +9,7 @@ kube_master_insecure_port: 8080
 
 kube_master_api_port: 443
 
-apiserver_extra_args: extensions/v1beta1/daemonsets=true,extensions/v1beta1/deployments=true,extensions/v1beta1/jobs=true
+apiserver_extra_args: --runtime-config=extensions/v1beta1/daemonsets=true,extensions/v1beta1/deployments=true,extensions/v1beta1/jobs=true
 
 kube_config_dir: /etc/kubernetes
 
