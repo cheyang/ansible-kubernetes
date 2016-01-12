@@ -13,3 +13,6 @@
 - name: Configure kube proxy if it doesn't exist
   include: proxy.yml
   when: not check_kube_proxy_configured.stat.exists
+  
+- name: Enable kube proxy
+  service: name=kube-proxy enabled=yes state=started
