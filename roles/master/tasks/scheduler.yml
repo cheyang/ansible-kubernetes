@@ -1,0 +1,10 @@
+---
+# tasks file for master
+
+  
+- name: write the config file for the scheduler
+  template: src=scheduler.j2 dest={{ kube_config_dir }}/apiserver
+  
+  
+- name: Write scheduler systemd unit file for centos redhat
+  copy: src=kube-scheduler.service dest=/usr/lib/systemd/system

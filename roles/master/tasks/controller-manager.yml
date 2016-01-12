@@ -1,0 +1,10 @@
+---
+# tasks file for master
+
+  
+- name: write the config file for the controller manager
+  template: src=controller-manager.j2 dest={{ kube_config_dir }}/controller-manager
+  
+  
+- name: Write controller manager systemd unit file for centos redhat
+  copy: src=kube-controller-manager.service dest=/usr/lib/systemd/system
