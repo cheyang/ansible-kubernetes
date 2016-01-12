@@ -1,7 +1,6 @@
 ---
 # defaults file for master
 
-cluster_name: cluster.local
 
 kube_master_insecure_host: 0.0.0.0
 

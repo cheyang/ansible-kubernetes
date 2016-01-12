@@ -35,3 +35,5 @@ flannel_host_prefix: 24
 
 kube_service_addresses: 172.17.0.0/16
 
+cluster_name: cluster.local
+
