@@ -74,4 +74,4 @@
   
 - name: Install scheduler if it doesn't exist
   include: scheduler.yml
-  when: not scheduler.stat.exists
+  when: not check_scheduler_configured.stat.exists
