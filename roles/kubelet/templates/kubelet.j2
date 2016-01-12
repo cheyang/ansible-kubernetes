@@ -14,6 +14,6 @@ KUBELET_HOSTNAME="--hostname-override={{ hostvars[inventory_hostname]['ansible_f
 KUBELET_API_SERVER="--api-servers=http://{{ groups['kube-masters'][0] }}:{{ kube_master_insecure_port }}"
 
 
-KUBELET_ARGS="{{ kubelet_options|join(' ') }}"
+KUBELET_ARGS=""
 
 KUBE_MASTER="--master=http://{{ groups['kube-masters'][0] }}:{{ kube_master_insecure_port }}"
