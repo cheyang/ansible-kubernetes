@@ -44,7 +44,7 @@
 # Determine if APIserver is installed  
  
 - name: Determine if apiserver configured
-  stat: path={{kube_config_dir}}/config/apiserver
+  stat: path={{kube_config_dir}}/apiserver
   register: check_apiserver_configured
   always_run: yes
   
@@ -56,7 +56,7 @@
 # Determine if controller mananger is installed  
  
 - name: Determine if controller-manager configured
-  stat: path={{kube_config_dir}}/config/controller-manager
+  stat: path={{kube_config_dir}}/controller-manager
   register: check_controller_configured
   always_run: yes
   
@@ -68,7 +68,7 @@
 # Determine if scheduler is installed  
  
 - name: Determine if controller-manager configured
-  stat: path={{kube_config_dir}}/config/scheduler
+  stat: path={{kube_config_dir}}/scheduler
   register: check_scheduler_configured
   always_run: yes
   
