@@ -5,4 +5,7 @@
 
 # Add your own!
 #KUBE_CONTROLLER_MANAGER_ARGS="--service-account-private-key-file={{ kube_cert_dir }}/server.key --root-ca-file={{ kube_cert_dir }}/ca.crt"
-KUBE_CONTROLLER_MANAGER_ARGS="--root-ca-file={{ kube_cert_dir }}/ca.crt"
+KUBE_CONTROLLER_MANAGER_ARGS=""
+
+
+KUBE_MASTER="--master=http://{{ groups['kube-masters'][0] }}:{{ kube_master_insecure_port }}"

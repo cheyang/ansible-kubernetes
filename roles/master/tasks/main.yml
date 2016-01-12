@@ -75,3 +75,15 @@
 - name: Install scheduler if it doesn't exist
   include: scheduler.yml
   when: not check_scheduler_configured.stat.exists
+  
+- name: Reload systemed
+  command: systemctl --system daemon-reload
+  
+- name: Enable apiserver
+  service: name=kube-apiserver enabled=yes state=started
+
+- name: Enable controller-manager
+  service: name=kube-controller-manager enabled=yes state=started
+  
+- name: Enable scheduler
+  service: name=kube-scheduler enabled=yes state=started

@@ -4,4 +4,6 @@
 # default config should be adequate
 
 # Add your own!
-KUBE_SCHEDULER_ARGS="--kubeconfig={{ kube_config_dir }}/scheduler.kubeconfig"
+KUBE_SCHEDULER_ARGS=""
+
+KUBE_MASTER="--master=http://{{ groups['kube-masters'][0] }}:{{ kube_master_insecure_port }}"
