@@ -2,12 +2,10 @@
 # tasks file for master
 
   
-- name: Add kube group
-  group: name=kube system=yes
-#  run_once: true
+- name: write the config file for the api server
+  template: src=apiserver.j2 dest={{ kube_config_dir }}/apiserver
   
-- name: Add kube user
-  user: name=kube system=yes shell=/sbin/nologin comment="Kubernetes user" group=kube home=/
-#  run_once: true
+  
+
 
   

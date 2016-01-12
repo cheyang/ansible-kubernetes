@@ -18,6 +18,7 @@
   include: config.yml
   when: not check_kube_global_configured.stat.exists
 
+# It's for generating certificate
 - name: Determine if certificate configured
   stat: path={{ kube_cert_dir }}/ca.crt
   register: check_ca_configured
@@ -25,3 +26,28 @@
 - name: Configure certificate if it doesn't exist
   include: secrets.yml
   when: not check_ca_configured.stat.exists
+  
+- name: Read back the CA certificate
+  slurp:
+    src: "{{ kube_cert_dir }}/ca.crt"
+  register: ca_cert
+  run_once: true
+  delegate_to: "{{ groups['kube-masters'][0] }}"
+
+- name: Register the CA certificate as a fact so it can be used later
+  set_fact:
+    kube_ca_cert: "{{ ca_cert.content|b64decode }}"
+
+- name: Place CA certificate everywhere
+  copy: content="{{ kube_ca_cert }}" dest="{{ kube_cert_dir }}/ca.crt"
+
+# Determine if APIserver is installed  
+ 
+- name: Determine if apiserver configured
+  stat: path={{kube_config_dir}}/config/apiserver
+  register: check_apiserver_installed
+  always_run: yes
+  
+- name: Install apiserver if it doesn't exist
+  include: apiserver.yml
+  when: not check_apiserver_installed.stat.exists
