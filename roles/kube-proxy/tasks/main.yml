@@ -1,2 +1,15 @@
 ---
 # tasks file for kube-proxy
+
+- name: Create kubernetes config directory
+  file: path={{ kube_config_dir }} state=directory
+  
+
+- name: Determine if kube-proxy configured
+  stat: path=/usr/lib/systemd/system/kube-proxy.service
+  register: check_kube_proxy_configured
+  always_run: yes
+  
+- name: Configure kube proxy if it doesn't exist
+  include: proxy.yml
+  when: not check_kube_proxy_configured.stat.exists

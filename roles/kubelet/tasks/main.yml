@@ -9,7 +9,7 @@
 
 
 - name: Determine if kubelet configured
-  stat: path=/usr/local/bin/kubelet
+  stat: path=/usr/lib/systemd/system/kubelet.service
   register: check_kubelet_configured
   always_run: yes
   
