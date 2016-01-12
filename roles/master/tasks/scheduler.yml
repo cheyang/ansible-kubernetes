@@ -3,7 +3,7 @@
 
   
 - name: write the config file for the scheduler
-  template: src=scheduler.j2 dest={{ kube_config_dir }}/apiserver
+  template: src=scheduler.j2 dest={{ kube_config_dir }}/scheduler
   
   
 - name: Write scheduler systemd unit file for centos redhat
