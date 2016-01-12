@@ -6,7 +6,7 @@ networking: flannel
 
 flannel_etcd_url_scheme: http
 
-flannel_subnet: 172.16.0.0
+flannel_subnet: 172.20.0.0
 
 flannel_prefix: 16
 
@@ -14,4 +14,4 @@ flannel_host_prefix: 24
 
 #kube related vars
 
-kube_service_addresses: 172.17.0.0/16
+kube_service_addresses: 172.21.0.0/16
