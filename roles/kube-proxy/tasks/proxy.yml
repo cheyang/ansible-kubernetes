@@ -11,4 +11,4 @@
 
   
 - name: Write kube proxy systemd unit file for centos redhat
-  copy: src=kubelet.service dest=/usr/lib/systemd/system
+  copy: src=kube-proxy.service dest=/usr/lib/systemd/system
