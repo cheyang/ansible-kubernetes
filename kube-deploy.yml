@@ -50,3 +50,12 @@
   sudo: yes
   roles:
     - master
+    
+# install nodes
+- hosts:
+    - kube-nodes
+  serial: 100%
+  sudo: yes
+  roles:
+    - kubelet
+    - kube-proxy
