@@ -1,2 +1,4 @@
 ---
 # defaults file for kubelet
+
+kube_config_dir: /etc/kubernetes
