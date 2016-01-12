@@ -6,6 +6,5 @@
   template: src=apiserver.j2 dest={{ kube_config_dir }}/apiserver
   
   
-
-
-  
+- name: Write apiserver systemd unit file for centos redhat
+  copy: src=kube-apiserver.service dest=/usr/lib/systemd/system
