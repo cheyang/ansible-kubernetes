@@ -7,6 +7,8 @@
 - name: write the kubelet config file for the kubelet
   template: src=kubelet.j2 dest={{ kube_config_dir }}/config
   
-  
+- name: reload systemd
+  command: systemctl --system daemon-reload
+
 - name: Write kubelet systemd unit file for centos redhat
   copy: src=kubelet.service dest=/usr/lib/systemd/system

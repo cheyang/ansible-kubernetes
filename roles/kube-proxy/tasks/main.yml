@@ -14,5 +14,9 @@
   include: proxy.yml
   when: not check_kube_proxy_configured.stat.exists
   
+- name: reload systemd
+  command: systemctl --system daemon-reload
+
+  
 - name: Enable kube proxy
   service: name=kube-proxy enabled=yes state=started
