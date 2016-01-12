@@ -3,6 +3,9 @@
 
 - name: Create kubernetes config directory
   file: path={{ kube_config_dir }} state=directory
+  
+- name: Create kubernetes run directory
+  file: path=/var/lib/kubelet state=directory
 
 
 - name: Determine if kubelet configured
