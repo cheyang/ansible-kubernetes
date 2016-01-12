@@ -42,6 +42,9 @@
   copy: content="{{ kube_ca_cert }}" dest="{{ kube_cert_dir }}/ca.crt"
 
 # Determine if APIserver is installed  
+
+- name: add cap_net_bind_service to kube-apiserver
+  capabilities: path=/usr/local/bin/kube-apiserver capability=cap_net_bind_service=ep state=present
  
 - name: Determine if apiserver configured
   stat: path={{kube_config_dir}}/apiserver
