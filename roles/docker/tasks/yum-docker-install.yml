@@ -2,9 +2,17 @@
 # tasks file for docker
 
 # For now only support centos, redhat and fedora
-- name: Update yum
-  shell: yum update
+- name: 'YUM UPDATE - fire and forget task'
+  yum: name=* state=latest
+  async: 1000
+  poll: 60
+  register: yum_sleeper
 
+- name: 'YUM UPDATE - check on fire and forget task'
+  async_status: jid={{ yum_sleeper.ansible_job_id }}
+  register: job_result
+  until: job_result.finished
+  retries: 100
 
 - name: Create docker repo
   template: src="docker.repo.j2" dest="/etc/yum.repos.d/docker.repo"
