@@ -1,0 +1,17 @@
+[kube-masters]
+10.62.66.254
+
+[kube-nodes]
+10.62.71.223
+10.62.66.223
+10.62.71.195
+10.62.71.189
+10.62.71.177
+
+[etcd]
+10.62.66.254
+
+[test:children]
+kube-masters
+kube-nodes
+etcd
