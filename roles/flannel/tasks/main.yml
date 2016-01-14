@@ -14,7 +14,7 @@
 
 - name: Configure flannel in etcd server
   include: network_config.yml
-  when:  "'Key not found' in check_flannel_not_configured"
+  when:  "'Key not found' in check_flannel_not_configured.stdout"
   run_once: true
     
 - name: Determine if flannel installed
