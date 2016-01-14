@@ -5,6 +5,8 @@
   shell: "curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network"
   register: check_flannel_not_configured
   run_once: true
+  
+- debug: msg="curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network"
 
 - debug: msg={{check_flannel_not_configured}}
 
