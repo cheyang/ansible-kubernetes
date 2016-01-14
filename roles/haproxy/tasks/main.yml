@@ -1,2 +1,9 @@
 ---
 # tasks file for haproxy
+
+- name: Enable ip forward on fly
+  shell: echo 1 > /proc/sys/net/ipv4/ip_forward
+  
+- name: Add to sysctl.conf if not exist
+  sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=no
+  
