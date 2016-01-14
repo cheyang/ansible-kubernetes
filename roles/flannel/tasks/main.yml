@@ -7,12 +7,15 @@
   run_once: true
   
 - debug: msg="curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network"
+  run_once: true
 
 - debug: msg={{check_flannel_not_configured.stdout}}
+  run_once: true
 
 - name: Configure flannel in etcd server
   include: network_config.yml
   when:  "'Key not found' in check_flannel_not_configured"
+  run_once: true
     
 - name: Determine if flannel installed
   stat: path=/usr/local/bin/flanneld
