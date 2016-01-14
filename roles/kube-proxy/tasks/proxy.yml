@@ -5,9 +5,12 @@
   register: check_kube_common_configured
   always_run: yes
   
-- name: Configure kublet common config if it doesn't exist
+- name: Configure kube common config if it doesn't exist
   template: src=config.j2 dest={{ kube_config_dir }}/config
   when: not check_kube_common_configured.stat.exists
+  
+- name: write the proxy config file for the kube proxy
+  template: src=proxy.j2 dest={{ kube_config_dir }}/proxy
 
   
 - name: Write kube proxy systemd unit file for centos redhat
