@@ -2,13 +2,13 @@
 # tasks file for flannel
 
 - name: Determine if etcd flannel config enabled
-  raw: "curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network"
+  shell: "curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network"
   register: check_flannel_not_configured
   run_once: true
   
 - debug: msg="curl -L {{flannel_etcd_url_scheme}}://{{ groups['etcd'][0] }}:2379/v2/keys/coreos.com/network"
 
-- debug: msg={{check_flannel_not_configured}}
+- debug: msg={{check_flannel_not_configured.stdout}}
 
 - name: Configure flannel in etcd server
   include: network_config.yml
