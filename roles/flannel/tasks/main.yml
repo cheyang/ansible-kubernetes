@@ -6,6 +6,8 @@
   register: check_flannel_not_configured
   run_once: true
 
+- debug: msg={{check_flannel_not_configured}}
+
 - name: Configure flannel in etcd server
   include: network_config.yml
   when:  "'Key not found' in check_flannel_not_configured"
