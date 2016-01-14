@@ -33,4 +33,4 @@
   
 - name: Configure flannel if it doesn't exist
   include: configure_flannel.yml
-  #when: not check_flannel_configured.stat.exists
+  when: not check_flannel_configured.stat.exists
