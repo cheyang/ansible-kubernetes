@@ -10,7 +10,7 @@ flannel_subnet: 172.20.0.0
 
 flannel_prefix: 16
 
-#Each machine may have availble IP addresses 64
+#Each machine may have available IP addresses 64
 flannel_host_prefix: 26
 
 
