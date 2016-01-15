@@ -7,9 +7,10 @@
 - name: Write flannel systemd unit file for centos redhat
   copy: src=flanneld.service dest=/usr/lib/systemd/system
   notify:
-    - reload systemd
-    - configure and start docker
     - start Flannel
     - enable Flannel
+    - reload systemd
+    - configure and start docker
+
     
   
