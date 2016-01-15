@@ -1,6 +1,15 @@
 ---
 # handlers file for flannel
 
+- name: start Flannel 
+  service: name=flanneld state=started
+   
+- name: enable Flannel
+  service: name=flanneld enabled=yes
+
+- name: reload systemd
+  command: systemctl --system daemon-reload  
+
 - name: configure and start docker
   shell: /bin/true
   notify:
@@ -30,12 +39,7 @@
 - name: start docker
   service: name=docker state=started
   
-- name: reload systemd
-  command: systemctl --system daemon-reload
+
   
-- name: start Flannel 
-  service: name=flanneld state=started
-   
-- name: enable Flannel
-  service: name=flanneld enabled=yes
+
     

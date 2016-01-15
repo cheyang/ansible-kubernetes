@@ -27,6 +27,9 @@
   when: (not check_flannel_installed.stat.exists) and (inventory_hostname in groups['kube-nodes'])
   tags: install
   
+- name: clean flanneld service temproary
+  file: path=/usr/lib/systemd/system/flanneld.service state=absent
+  
 - name: Determine if flannel configured
   stat: path=/usr/lib/systemd/system/flanneld.service
   register: check_flannel_configured
