@@ -10,6 +10,9 @@
   user: name=kube system=yes shell=/sbin/nologin comment="Kubernetes user" group=kube home=/
 #  run_once: true
 
+- name: Enable Docker
+  service: name=docker enabled=no state=stopped
+
 - name: Determine if general config done
   stat: path={{kube_config_dir}}/config
   register: check_kube_global_configured
