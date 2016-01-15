@@ -4,6 +4,6 @@
 # default config should be adequate
 
 # Add your own!
-KUBE_PROXY_ARGS="--proxy-mode={{kube_proxy_mode}}"
+KUBE_PROXY_ARGS="{{kube_proxy_mode}}"
 
 KUBE_MASTER="--master=http://{{ groups['kube-masters'][0] }}:{{ kube_master_insecure_port }}"

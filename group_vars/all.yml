@@ -38,5 +38,5 @@ kube_service_addresses: 172.17.0.0/16
 cluster_name: cluster.local
 
 #iptables or userspace
-kube_proxy_mode: iptables
+kube_proxy_mode: "--proxy-mode=iptables --masquerade-all=true"
 

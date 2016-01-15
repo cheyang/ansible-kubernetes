@@ -8,4 +8,4 @@ kube_master_insecure_port: 8080
 kube_master_api_port: 9443
 
 #iptables or userspace
-kube_proxy_mode: iptables
+kube_proxy_mode: "--proxy-mode=iptables --masquerade-all=true"
