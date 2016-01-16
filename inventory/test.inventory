@@ -11,6 +11,9 @@
 [etcd]
 10.62.66.254
 
+[haproxy]
+10.62.71.222
+
 [test:children]
 kube-masters
 kube-nodes
