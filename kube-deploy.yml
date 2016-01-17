@@ -59,3 +59,12 @@
   roles:
     - kubelet
     - kube-proxy
+    
+- hosts:
+    - haproxy
+  serial: 100%
+  sudo: yes
+  roles:
+    - kubelet
+    - kube-proxy
+    - haproxy

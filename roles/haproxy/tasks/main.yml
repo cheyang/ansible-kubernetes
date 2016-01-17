@@ -7,3 +7,10 @@
 - name: Add to sysctl.conf if not exist
   sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=no
   
+- name: Configure the haproxy cnf file with hosts
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  notify: restart haproxy
+
+- name: Start the haproxy service
+  service: name=haproxy state=started enabled=yes
+  

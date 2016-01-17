@@ -18,3 +18,4 @@
 kube-masters
 kube-nodes
 etcd
+haproxy
