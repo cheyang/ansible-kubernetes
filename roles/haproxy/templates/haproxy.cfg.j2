@@ -68,7 +68,7 @@ listen  stats   0.0.0.0:1936
 frontend vmpool
 	mode	tcp
 	option tcplog
-	bind	0.0.0.0:443
+	bind	0.0.0.0:1443
 	
 	acl vmpool_app_blue req.ssl_sni -i www.vmpoolblue.com
 	acl vmpool_app_green req.ssl_sni -i www.vmpoolgreen.com
@@ -76,19 +76,19 @@ frontend vmpool
 	use_backend vmpool_backend_blue if vmpool_app_blue
 	use_backend vmpool_backend_green if vmpool_app_green
 	
-	default_backend vmpool_app_blue
+	default_backend vmpool_backend_blue
 	
 backend vmpool_backend_blue
         mode tcp
         option tcplog
-        balance roundrobin
+        #balance roundrobin
 
-        server s1 10.35.56.210:3000
+        server blue_s1 127.0.0.1:3000
 	
-backend vmpool_green_green
+backend vmpool_backend_green
         mode tcp
         option tcplog
-        balance roundrobin
+        #balance roundrobin
 
-        server s1 10.35.56.247:3000
+        server green_s1 127.0.0.2:3000
    
