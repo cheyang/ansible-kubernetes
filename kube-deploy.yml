@@ -65,6 +65,8 @@
   serial: 100%
   sudo: yes
   roles:
+    - kubernetes
+    - flannel
     - kubelet
     - kube-proxy
     - haproxy
