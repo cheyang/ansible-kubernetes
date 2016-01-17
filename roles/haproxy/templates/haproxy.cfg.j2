@@ -51,9 +51,6 @@ listen  stats   0.0.0.0:1936
 
     maxconn 10
 
-    clitimeout      100s
-    srvtimeout      100s
-    contimeout      100s
     timeout queue   100s
 
     stats enable
@@ -68,10 +65,14 @@ listen  stats   0.0.0.0:1936
 frontend vmpool
 	mode	tcp
 	option tcplog
-	bind	0.0.0.0:1443
+	bind	0.0.0.0:443
 	
-	acl vmpool_app_blue req.ssl_sni -i www.vmpoolblue.com
-	acl vmpool_app_green req.ssl_sni -i www.vmpoolgreen.com
+#	tcp-request inspect-delay 500ms
+	tcp-request inspect-delay 1s
+    tcp-request content accept if { req_ssl_hello_type 1 }
+	
+	acl vmpool_app_blue req.ssl_sni -i vmpoolblue.saas.com
+	acl vmpool_app_green req.ssl_sni -i vmpoolgreen.saas.com
 	
 	use_backend vmpool_backend_blue if vmpool_app_blue
 	use_backend vmpool_backend_green if vmpool_app_green
