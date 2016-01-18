@@ -16,7 +16,7 @@
   get_url:
     url: "{{etcd_download_url}}"
     dest: /tmp/.ansible/files
-    #validate_certs: False
+    validate_certs: no
   environment:
     http_proxy: "{{ http_proxy|default('') }}"
     https_proxy: "{{ https_proxy|default('') }}"

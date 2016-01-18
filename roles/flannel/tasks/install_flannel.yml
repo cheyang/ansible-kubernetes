@@ -16,6 +16,7 @@
   get_url:
     url: "{{flannel_download_url}}"
     dest: /tmp/.ansible/files
+    validate_certs: no
     #validate_certs: False
   environment:
     http_proxy: "{{ http_proxy|default('') }}"

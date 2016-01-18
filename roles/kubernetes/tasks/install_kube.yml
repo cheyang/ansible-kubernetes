@@ -13,7 +13,7 @@
   get_url: >
     url={{kubernetes_download_url}}
     dest=/tmp/{{kubernetes_binary_package}}
-    
+    validate_certs=no
 
 - name: Extract kubernetes package
   unarchive: src=/tmp/{{kubernetes_binary_package}}
