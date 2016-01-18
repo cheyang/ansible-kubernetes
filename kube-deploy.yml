@@ -66,6 +66,7 @@
   sudo: yes
   roles:
     - kubernetes
+    - docker
     - flannel
     - kubelet
     - kube-proxy
