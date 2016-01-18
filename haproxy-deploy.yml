@@ -1,0 +1,13 @@
+---
+    
+- hosts:
+    - ha_proxy
+  serial: 100%
+  sudo: yes
+  roles:
+    - kubernetes
+    - docker
+    - flannel
+    - kubelet
+    - kube-proxy
+    - haproxy
