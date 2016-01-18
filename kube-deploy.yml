@@ -61,7 +61,7 @@
     - kube-proxy
     
 - hosts:
-    - haproxy
+    - ha_proxy
   serial: 100%
   sudo: yes
   roles:
