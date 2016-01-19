@@ -15,7 +15,7 @@
 10.62.71.222
 
 [registry]
-
+10.62.71.162
 
 [test:children]
 kube-masters
