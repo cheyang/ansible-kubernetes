@@ -1,2 +1,11 @@
 ---
 # tasks file for registry
+
+- name: Create regstry cert direcotry
+  file: path=/etc/docker/certs.d/{{docker_registry}} state=directory
+  when: docker_registry != ""
+
+- name: Write ca.crt to docker registry
+  copy: src=ca.crt dest=/etc/docker/certs.d/{{docker_registry}}
+  notify:
+    - restart docker
