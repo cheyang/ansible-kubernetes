@@ -11,11 +11,6 @@
     - restart docker
     
     
-- name: Start kubelet
-  copy: src=ca.crt dest=/etc/docker/certs.d/{{docker_registry}}
-  notify:
-    - restart docker
-    
     
 - name: Start kubelet
-  service: name=kubelet state=started
+  service: name=kubelet state=restarted
