@@ -3,4 +3,9 @@
 
 - name: restart docker
   service: name=docker state=restarted
+  notify: make sure kubelet is started
+  
+  
+- name:  make sure kubelet is started
+  service: name=kubelet state=started 
   

@@ -10,7 +10,5 @@
   notify:
     - restart docker
     
-    
-    
 - name: Start kubelet
-  service: name=kubelet state=restarted
+  service: name=kubelet state=started 
