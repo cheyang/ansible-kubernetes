@@ -43,4 +43,5 @@ cluster_name: cluster.local
 kube_proxy_mode: "--proxy-mode=iptables --masquerade-all=true"
 
 
-
+# ntp server
+ntpserver: "10.0.77.54"

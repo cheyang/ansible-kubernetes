@@ -8,3 +8,8 @@
 
 - name: "Install ntp"
   yum: name=ntp state=present
+  
+  
+- name: "sync time"
+  shell: ntpdate {{ntpserver}}
+  when: ntpserver != ""
