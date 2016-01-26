@@ -33,6 +33,9 @@ flannel_prefix: 16
 
 flannel_host_prefix: 24
 
+# should use eth0 as default
+flannel_opts: -iface=eth0
+
 #kube related vars
 
 kube_service_addresses: 172.17.0.0/16
