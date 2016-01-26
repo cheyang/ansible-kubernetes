@@ -1,0 +1,8 @@
+---
+    
+- hosts:
+    - kube-nodes
+  serial: 100%
+  sudo: yes
+  roles:
+    - clean_data
