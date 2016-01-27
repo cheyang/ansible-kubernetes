@@ -3,3 +3,10 @@
 
 - name: Clean up persistent data
   file: path=/k8s state=absent
+  
+  
+- name: Clean up containers
+  shell: docker rm $(docker ps -aq)
+  
+- name: Clean up docker images
+  shell: docker rmi $(docker images -q)
