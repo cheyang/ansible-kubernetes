@@ -18,4 +18,4 @@ inventory=${INVENTORY:-inventory}
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 
-ansible-playbook -i ${inventory} kube-deploy.yml $@
+ansible-playbook -i ${inventory} --user=ansibleuser kube-deploy.yml $@ 
