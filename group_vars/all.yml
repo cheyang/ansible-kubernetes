@@ -34,7 +34,7 @@ flannel_prefix: 16
 flannel_host_prefix: 24
 
 # should use eth0 as default
-flannel_opts: -iface=eth0
+flannel_opts: "-iface=eth0 --ip-masq=true"
 
 #kube related vars
 
@@ -43,7 +43,7 @@ kube_service_addresses: 172.17.0.0/16
 cluster_name: cluster.local
 
 #iptables or userspace
-kube_proxy_mode: "--proxy-mode=iptables --masquerade-all=true"
+kube_proxy_mode: "--proxy-mode=iptables --masquerade-all=false"
 
 
 # ntp server
