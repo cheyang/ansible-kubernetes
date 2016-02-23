@@ -13,6 +13,8 @@ docker_package_name: "docker-engine"
 
 docker_registry: "SIDR24APISDP001.dal-na.apm.ibmserviceengage.com:5000"
 
+docker_registry_ca_dir: "SIDR24APISDP001"
+
 #etcd related vars
 
 etcd_version: "2.0.12"

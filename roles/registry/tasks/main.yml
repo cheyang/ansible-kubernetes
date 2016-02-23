@@ -6,7 +6,7 @@
   when: docker_registry != ""
 
 - name: Write ca.crt to docker registry
-  copy: src=ca.crt dest=/etc/docker/certs.d/{{docker_registry}}
+  copy: src={{docker_registry_ca_dir}}/ca.crt dest=/etc/docker/certs.d/{{docker_registry}}
   notify:
     - restart docker
     
