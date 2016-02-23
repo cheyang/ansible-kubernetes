@@ -1,0 +1,24 @@
+---
+
+cluster_name: cluster.cloudsvt
+
+networking: flannel
+
+flannel_etcd_url_scheme: http
+
+flannel_subnet: 172.20.0.0
+
+flannel_prefix: 16
+
+#Each machine may have available IP addresses 64
+flannel_host_prefix: 26
+
+
+#kube related vars
+
+kube_service_addresses: 172.21.0.0/16
+
+
+docker_registry: "SIDR12APISDPSVT-001.dal-na.apm.ibmserviceengage.com:5000"
+
+docker_registry_ca_dir: "SIDR12APISDPSVT-001"
