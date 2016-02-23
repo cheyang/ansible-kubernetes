@@ -37,6 +37,7 @@
 # install and configure flannel  
 - hosts:
     - kube-nodes
+    - kube-masters
   serial: 100%
   sudo: yes
   roles:
