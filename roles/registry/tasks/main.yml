@@ -5,6 +5,8 @@
   file: path=/etc/docker/certs.d/{{docker_registry}} state=directory
   when: docker_registry != ""
 
+- debug: msg="{{docker_registry_ca_dir}}/ca.crt"
+
 - name: Write ca.crt to docker registry
   copy: src={{docker_registry_ca_dir}}/ca.crt dest=/etc/docker/certs.d/{{docker_registry}}
   notify:

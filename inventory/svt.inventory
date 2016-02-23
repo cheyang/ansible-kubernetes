@@ -12,7 +12,7 @@
 
 [registry]
 
-[test:children]
+[svt:children]
 kube-masters
 kube-nodes
 etcd
