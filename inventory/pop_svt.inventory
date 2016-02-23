@@ -12,7 +12,7 @@
 
 [registry]
 
-[svt:children]
+[pop_svt:children]
 kube-masters
 kube-nodes
 etcd
