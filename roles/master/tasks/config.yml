@@ -9,5 +9,5 @@
   file: path={{ kube_script_dir }} state=directory
 
 - name: Generate kubernetes global config file
-  template: src=config.j2 dest={{ kube_config_dir }}/config
+  template: src={{ kubernetes_release_version }}/config.j2 dest={{ kube_config_dir }}/config
   

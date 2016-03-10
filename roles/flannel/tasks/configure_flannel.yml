@@ -2,10 +2,10 @@
 # tasks file for flannel configuration
 
 - name: Write Flannel config file
-  template: src=flanneld.j2 dest=/etc/sysconfig/flanneld
+  template: src={{ flannel_version }}/flanneld.j2 dest=/etc/sysconfig/flanneld
     
 - name: Write flannel systemd unit file for centos redhat
-  copy: src=flanneld.service dest=/usr/lib/systemd/system
+  copy: src={{ flannel_version }}/flanneld.service dest=/usr/lib/systemd/system
   notify:
     - start Flannel
     - enable Flannel

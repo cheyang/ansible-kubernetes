@@ -3,8 +3,8 @@
 
   
 - name: write the config file for the scheduler
-  template: src=scheduler.j2 dest={{ kube_config_dir }}/scheduler
+  template: src={{ kubernetes_release_version }}/scheduler.j2 dest={{ kube_config_dir }}/scheduler
   
   
 - name: Write scheduler systemd unit file for centos redhat
-  copy: src=kube-scheduler.service dest=/usr/lib/systemd/system
+  copy: src={{ kubernetes_release_version }}/kube-scheduler.service dest=/usr/lib/systemd/system

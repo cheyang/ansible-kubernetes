@@ -3,8 +3,8 @@
 
   
 - name: write the config file for the api server
-  template: src=apiserver.j2 dest={{ kube_config_dir }}/apiserver
+  template: src={{ kubernetes_release_version }}/apiserver.j2 dest={{ kube_config_dir }}/apiserver
   
   
 - name: Write apiserver systemd unit file for centos redhat
-  copy: src=kube-apiserver.service dest=/usr/lib/systemd/system
+  copy: src={{ kubernetes_release_version }}/kube-apiserver.service dest=/usr/lib/systemd/system
