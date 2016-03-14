@@ -35,6 +35,8 @@ flannel_prefix: 16
 
 flannel_host_prefix: 24
 
+flannel_backend_type: udp
+
 # should use eth0 as default
 flannel_opts: "-iface=eth0 --ip-masq=true"
 

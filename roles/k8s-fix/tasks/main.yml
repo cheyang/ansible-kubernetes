@@ -1,2 +1,17 @@
 ---
 # tasks file for k8s-fix
+
+
+- name: Determine if iptables correct configured
+  shell: "iptables -t nat -L|grep MAS|head -1"
+  register: check_iptables_correct_configured
+  always_run: yes
+  ignore_errors: yes
+
+
+
+- debug: msg={{check_iptables_correct_configured.stdout}}
+
+- name: Fix iptables in kube node
+  include: fix.yml
+  when: "'kubernetes' not in check_iptables_correct_configured.stdout"

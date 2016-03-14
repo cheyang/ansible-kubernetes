@@ -1,1 +1,1 @@
-{ "Network": "{{ flannel_subnet }}/{{ flannel_prefix }}", "SubnetLen": {{ flannel_host_prefix }}, "Backend": { "Type": "udp" } }
+{ "Network": "{{ flannel_subnet }}/{{ flannel_prefix }}", "SubnetLen": {{ flannel_host_prefix }}, "Backend": { "Type": "{{ flannel_backend_type }}" } }
