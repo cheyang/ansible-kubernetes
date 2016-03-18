@@ -37,3 +37,12 @@
 - name: Configure flannel if it doesn't exist
   include: configure_flannel.yml
   when: not check_flannel_configured.stat.exists
+  
+- name: Determine if flannel started
+  shell: "service flanneld status 2>&1 |grep Active:"
+  register: check_flannel_started
+  always_run: yes
+  
+- name: Start flannel if it doesn't start
+  include: start_flannel.yml
+  when:  "'running' not in check_flannel_started.stdout"

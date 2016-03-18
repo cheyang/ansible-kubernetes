@@ -1,0 +1,28 @@
+---
+# tasks file for k8s-fix
+
+
+- name: stop kube-proxy
+  service: name=kube-proxy state=stopped
+  
+- name:  stop flannel
+  service: name=flanneld state=stopped
+  
+- pause: seconds=5
+  
+- name: clean up nat
+  shell: iptables -t nat -F
+
+
+- name: start kube-proxy
+  service: name=kube-proxy state=started 
+  
+- name: Check iptables
+  shell: iptables -t nat -L|grep MAS|head -1
+  register: result
+  until: result.stdout.find("kubernetes") != -1
+  retries: 20
+  delay: 1
+  
+- name: start kubelet
+  service: name=kubelet state=started 

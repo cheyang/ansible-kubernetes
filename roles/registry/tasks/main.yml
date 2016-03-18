@@ -1,5 +1,10 @@
 ---
 # tasks file for registry
+# We handle this in case no dns for docker registry
+- name: "Build hosts file for docker registry"
+  lineinfile: dest=/etc/hosts regexp='^{{ docker_registry_ip }}.*' line="{{ docker_registry_ip }} {{docker_registry.split(":")[0]}} {{(docker_registry.split(":")[0]).split(".")[0]}}" state=present
+  when: docker_registry_ip != "" and docker_registry.split(":")[0] != ""
+  
 
 - name: Configure regstry
   include: registry.yml

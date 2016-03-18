@@ -1,0 +1,24 @@
+---
+# tasks file for flannel start up, it's safe to update the configuration at this moment
+
+- name: Clean up Flannel config file
+  file: path=/etc/sysconfig/flanneld state=absent
+  
+- name: Clean up systemd config file
+  file: path=/usr/lib/systemd/system/flanneld.service state=absent
+
+- name: Write Flannel config file
+  template: src={{ flannel_version }}/flanneld.j2 dest=/etc/sysconfig/flanneld
+    
+- name: Write flannel systemd unit file for centos redhat
+  copy: src={{ flannel_version }}/flanneld.service dest=/usr/lib/systemd/system
+
+- name: start flannel service
+  shell: /bin/true
+  notify:
+    - start Flannel
+    - enable Flannel
+    - reload systemd
+    - configure and start docker
+    
+  

@@ -22,3 +22,5 @@ kube_service_addresses: 172.21.0.0/16
 docker_registry: "SIDR12APISDPSVT-001.dal-na.apm.ibmserviceengage.com:5000"
 
 docker_registry_ca_dir: "SIDR12APISDPSVT-001"
+
+flannel_backend_type: "vxlan"
